@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset="utf-8" />
+  <title>Lamp - Switch</title>
+  <link type="text/css" rel="stylesheet"
+        href="{{ url_for('static',
+              filename='index.css')}}" />
+</head>
+<body>
+  <form action="LEDinfo" method="POST">
+    {% for pinName, data in pins.iteritems() %}
+      <div>
+        <h1>{{pinName}}</h1>
+        {% if data.state %}
+          <input class="offbtn" type="submit" name="{{pinName}}" value="0">
+        {% else %}
+          <input class="onbtn" type="submit" name="{{pinName}}" value="1">
+        {% endif %}
+      </div>
+    {% endfor %}
+  </form>
+</body>
+</html>
